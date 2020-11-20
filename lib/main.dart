@@ -21,8 +21,9 @@ void main() {
   };
   var op = <int, Widget>{1: MyApp(), 2: MyApp()};
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: CustomSplash(
-      imagePath: 'assets/images/icons.png',
+      imagePath: 'assets/images/images.png',
       backGroundColor: Colors.grey,
       animationEffect: 'zoom-in',
       logoSize: 200,

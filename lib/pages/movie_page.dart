@@ -15,6 +15,7 @@ class _MoviePageState extends State<MoviePage> {
   final _controller = MovieController();
   final _scrollController = ScrollController();
   int lastPage = 1;
+  int gridCards = 2;
 
   @override
   void initState() {
@@ -48,6 +49,18 @@ class _MoviePageState extends State<MoviePage> {
     });
   }
 
+  _changeGrid() {
+    if (this.gridCards == 2) {
+      setState(() {
+        this.gridCards = 3;
+      });
+    } else {
+      setState(() {
+        this.gridCards = 2;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +76,10 @@ class _MoviePageState extends State<MoviePage> {
         IconButton(
           icon: Icon(Icons.refresh),
           onPressed: _initialize,
+        ),
+        IconButton(
+          icon: Icon(Icons.view_column),
+          onPressed: _changeGrid,
         ),
       ],
     );
@@ -82,7 +99,7 @@ class _MoviePageState extends State<MoviePage> {
       padding: const EdgeInsets.all(2.0),
       itemCount: _controller.moviesCount,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: gridCards,
         mainAxisSpacing: 2,
         crossAxisSpacing: 2,
         childAspectRatio: 0.65,
